@@ -1,0 +1,20 @@
+#Use the Officiel Node.js image as the base image
+FROM --platform=linux/amd64 node:18
+#Set the working directory in the container
+WORKDIR /my-workspace
+
+
+#copy package.json and package-lock.json to the working directory
+COPY package*.json .
+
+#Install application dependecies
+RUN npm install 
+
+#copy the rest of the application files to the working directory.
+COPY . .
+
+#Define the command to run the app
+
+CMD [ "npm", "start", "app.js" ]
+
+    

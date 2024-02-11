@@ -1,0 +1,18 @@
+
+name: my-stack
+version: '3.9'
+
+services:
+  nodejs-service:
+    container_name: nodejs-container
+    build:
+        context: .
+        dockerfile: dockerfile-dev
+    ports:
+      - "3001:3000"
+
+  mongodb-service:
+    container_name: mongo-container
+    image: mongo:latest
+    ports:
+      - "27018:27017"
