@@ -3,16 +3,35 @@ name: my-stack
 version: '3.9'
 
 services:
+
   nodejs-service:
     container_name: nodejs-container
     build:
         context: .
-        dockerfile: dockerfile-dev
+        dockerfile: Dockerfile
     ports:
       - "3001:3000"
+    volumes:
+      - ./:/my-workspace
+    networks:
+      - ja3fer-net
+    depends_on:
+      - mongodb-service
 
   mongodb-service:
     container_name: mongo-container
     image: mongo:latest
     ports:
       - "27018:27017"
+    volumes:
+      - mongodb-volume:/data/db
+    networks:
+      - ja3fer-net
+
+
+networks:
+  ja3fer-net:
+    driver: bridge    #specify the driver for thr network
+
+volumes:
+  mongodb-volume:

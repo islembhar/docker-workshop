@@ -12,12 +12,12 @@ const connectExternalNetwork = "mongodb://localhost:27018/test-db";
 
 // Connect to MongoDB
 mongoose
-  .connect(connectExternalNetwork, { useNewUrlParser: true })
+  .connect(connectInternalNetwork, { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("Error = ",err));
 
 app.get("/", (req, res) => {
-  res.send("Hello World - Le bon développeur community !");
+  res.send("Hello islem Bhar World - Le bon développeur community !");
 });
 
 app.get("/items", (req, res) => {
